@@ -4,7 +4,7 @@ from llama_index.core import StorageContext
 from pikepdf import Pdf, PdfImage
 
 
-filename = "videobot\Rajkumar\Action_pdf_updated.pdf"
+filename = "videobot\Rajkumar\doc.pdf"
 
 
 example = Pdf.open(filename)
@@ -56,7 +56,7 @@ def save_text_to_file(text, output_filename):
         txt_file.write(text)
 
 # Example usage with error handling
-pdf_file = "videobot\Rajkumar\Action_pdf_updated.pdf"
+pdf_file = "videobot\Rajkumar\doc.pdf"
 output_txt = "videobot\Rajkumar\extracted_text.txt"
 
 try:

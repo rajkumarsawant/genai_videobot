@@ -122,49 +122,16 @@ for i in txt:
 # The text that you want to convert to audio
 mytext = result.text
 
-# Language in which you want to convert
-language = 'en'
+def display_images(image_paths):
+    fig, axes = plt.subplots(1, len(image_paths), figsize=(20, 5))
 
-# Passing the text and language to the engine,
-# here we have marked slow=False. Which tells
-# the module that the converted audio should
-# have a high speed
-myobj = gTTS(text=mytext, lang=language, slow=False)
+    for ax, img_path in zip(axes, image_paths):
+        img = Image.open(img_path)
+        ax.imshow(img)
+        ax.axis('off')  # Hide the axis
 
-# Saving the converted audio in a mp3 file named
-# welcome
-myobj.save("videobot\welcome.mp3")
+    plt.show()
 
-# Playing the converted file
-os.system("start welcome.mp3")
-
-
-
-
-# Define the list of images (assuming they are in the same folder)
-image_list = img
-
-# Define the video name and frame rate
-video_name = "videobot\output_video.avi"
-fps = 1/9.2 # Adjust FPS for desired speed
-
-# Get the first image to determine frame size
-frame = cv2.imread(image_list[0])
-height, width, channels = frame.shape
-
-# Create a video writer object
-video = cv2.VideoWriter(video_name, 0, fps, (width, height))
-
-# Loop through the image list and write to video
-for image in image_list:
-  image_path = os.path.join(os.getcwd(), image)  # Get full path for image
-  frame = cv2.imread(image_path)  # Read the image
-  video.write(frame)
-
-# Release resources
-video.release()
-cv2.destroyAllWindows()
-
-print("Video created successfully!")
-print(len(img))
-
+# Call the function to display images
+image_paths=img
+display_images(image_paths)
